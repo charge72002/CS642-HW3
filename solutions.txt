@@ -1,0 +1,32 @@
+Attack A:
+
+
+
+Attack B:
+1. 
+Cross-Site Foragery - Zoobar's security is non-existent, so we are essentially able
+to do whatever we could possibly want on the site inside someone's account...from a 
+different site altogether.
+
+2. 
+Basically, we have some HTML code that, when run by the target, uses a hidden,
+pre-filled-out form to transfer 10 Zoobars from the target's account to "attacker".
+This form is aimed (action) at the transfer php page on the Zoobar site, so it provides a 
+recipient (attacker) and number of Zoobars (10). We used an iframe so that when
+the form is sent, it does not open up the transfer.php page in a separate tab, but 
+rather, invisibly, on the same page. Once the page is loaded up (i.e. the transfer
+went through), the page is redirected to Bing, leaving the target none-the-wiser.
+
+3. 
+I like the idea of a secret validation token (from lecture) in this case because
+the attack relies on there being no surprises. At a minimum, adding a layer of 
+validation would would make the attack far more difficult--and, if we were to employ 
+some of the ideas we learned in class about hashing (hashing a session token) and 
+making the hashing process slow, then it may become prohibitively expensive to crack. 
+
+
+
+Attack C: 
+
+
+
