@@ -25,8 +25,28 @@ some of the ideas we learned in class about hashing (hashing a session token) an
 making the hashing process slow, then it may become prohibitively expensive to crack. 
 
 
-
 Attack C: 
+1.
+SQL Injection - when Zoobar searches its database for a username/hashed password
+match, it uses verbatim user input for the username, which opens the door to using
+some SQL code in the username.
 
+2. 
+On the surface, our HTML code just has an input box, into which you should put an
+existing username, and a submit buttom (BREAK IN!). Under the hood, the HTML uses 
+the username and concatenates an apostrophe (') and a SQL single-line comment (--).
+This combination effectively cancels out the rest of the criteria in the database 
+search, so that its just looking for the username. So, the account that is ultimately 
+logged into is the one associated with the username. However, each time this is run,
+it actually creates a new account with a username of <username>'--. This can only 
+be done once because once <username>'-- exists, it cannot be used again as essentially
+the surrogate. So, we make a new username every time. To ensure each new username
+is unique, I also concatenate the current date (Javascript) -- so, <username>'--<Date.now()>.
+This basically guarentees, as long as attacks aren't made more than 1 per nanosecond, 
+that it is safe to use (until 2038 presumably anyway).
 
-
+3. 
+The biggest way to mitigate this attack is simply to be smarter with SQL -- as explained
+in lecture, do not build the commands right from the user input! Instead, but the user
+input through a preparation stage where the input is escaped as necessary, so that 
+when it does reach execution, the user input is never anything more than a string.

