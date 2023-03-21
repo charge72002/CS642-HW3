@@ -1,5 +1,24 @@
 Attack A:
+1. 
+Zoobar is susceptible to a cross-site-scripting attack, i.e., arbitrary code can be 
+passed and run into the HTML via user input (in this case the URL). Since the user 
+field does not screen user input and just plops it right into the HTML file, it can 
+easily be abused to end the user entry field early and continue passing in arbitrary
+code.
 
+2. 
+This attack works by passing in Javascript code through the user field. In the 
+source code, this is treated as regular HTML code, through which we can run a 
+javascript program to send an email containing the user's login cookie.
+
+After the email is sent, the user is redirected back to the user page as if nothing happened.
+Source for redirection code: https://www.w3docs.com/snippets/html/how-to-redirect-a-web-page-in-html.html
+
+3. 
+We can mitigate this vulnerability by screening user inputs to the user field to 
+exclude special characters (and thereby also exclude special characters in all 
+usernames during account registration). OR implementing a content security policy 
+specifying explicitly where Javascript is and is not allowed to run.
 
 
 Attack B:
